@@ -1,5 +1,5 @@
 import comment from './comment';
-import post from './pose';
+import post from './post';
 import postedBy from './postedBy';
 import user from './user';
 

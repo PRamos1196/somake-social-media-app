@@ -6,7 +6,7 @@ import type { NextPage} from 'next';
 import { Url } from 'url';
 
 import { Video } from '../types';
-import VideoCard from '../components/VIdeoCard';
+import VideoCard from '../components/VideoCard';
 import NoResults from '../components/NoResults';
 
 interface IProps {
