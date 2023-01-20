@@ -31,19 +31,18 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     }
 
   return (
-    <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
+    <div className='flex flex-col pb-6'>
       <div>
         <div className='flex gap-3 p-2 cursor-pointer font-semibold rounded '>
           <div className='md:w-16 md:h-16 w-10 h-10'>
             <Link href={`/`}>
               <>
                 <Image
-                  width={62}
-                  height={62}
-                  className=' rounded-full'
+                  width={40}
+                  height={40}
+                  className='rounded-full'
                   src={post.postedBy.image}
                   alt='user-profile'
-                  layout='responsive'
                 />
               </>
             </Link>
@@ -51,11 +50,11 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           <div>
             <Link href="/">
                 <div className="flex items-center gap-2">
-                    <p className="flex gap-2 items-center md:text-md font-bold text-primary">
+                    <p className="flex gap-2 items-center md:text-md font-bold text-white">
                         {post.postedBy.userName}{` `}
                         <GoVerified className="text-blue-400 text-md"/>
                     </p>
-                    <p className="capitalize font-medium text-xs text-gray-500 hidden md:block">
+                    <p className="capitalize font-medium text-xs text-gray-400 hidden md:block">
                         {post.postedBy.userName}
                     </p>
                 </div>
@@ -73,10 +72,10 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 loop
                 ref={videoRef}
                 className="
-                    lg:w[600px] h-[300px] 
+                    lg:w-[600px] h-[300px] 
                     md:h-[400px] lg:h-[530px] 
                     w-[200px] rounded-2xl 
-                    cursor-pointer bg-gray-100"
+                    cursor-pointer bg-black"
                 src={post.video.asset.url}
             >
 
@@ -85,20 +84,20 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 <div className="absolute bottom-6 cursor-pionter left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] p-3">
                     {playing ? (
                         <button onClick={onVideoPress}>
-                            <BsFillPauseFill className="text-black text-2xl lg:text-4xl"/>
+                            <BsFillPauseFill className="text-white text-2xl lg:text-4xl"/>
                         </button>
                     ) : (
                         <button onClick={onVideoPress}>
-                            <BsFillPlayFill className="text-black text-2xl lg:text-4xl"/>
+                            <BsFillPlayFill className="text-white text-2xl lg:text-4xl"/>
                         </button>
                     )}
                     {isVideoMuted ? (
                         <button onClick={() => setIsVideoMuted(false)}>
-                            <HiVolumeOff className="text-black text-2xl lg:text-4xl"/>
+                            <HiVolumeOff className="text-white text-2xl lg:text-4xl"/>
                         </button>
                     ) : (
                         <button onClick={() => setIsVideoMuted(true)}>
-                            <HiVolumeUp className="text-black text-2xl lg:text-4xl"/>
+                            <HiVolumeUp className="text-white text-2xl lg:text-4xl"/>
                         </button>
                     )}
                 </div>
