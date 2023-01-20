@@ -38,12 +38,11 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             <Link href={`/`}>
               <>
                 <Image
-                  width={62}
-                  height={62}
-                  className=' rounded-full'
+                  width={40}
+                  height={40}
+                  className='rounded-full'
                   src={post.postedBy.image}
                   alt='user-profile'
-                  layout='responsive'
                 />
               </>
             </Link>
@@ -73,7 +72,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 loop
                 ref={videoRef}
                 className="
-                    lg:w[600px] h-[300px] 
+                    lg:w-[600px] h-[300px] 
                     md:h-[400px] lg:h-[530px] 
                     w-[200px] rounded-2xl 
                     cursor-pointer bg-gray-100"
