@@ -65,11 +65,11 @@ const Upload = () => {
         }
     }
   return (
-    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 bg-[#020202] justify-center">
-        <div className="bg-white rounded-lg xl:h-[80vh] w-[60%] flex gap-6 flex-wrap justify-between items-center p-14 pt-6">
+    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 bg-[#0f0f0f] justify-center">
+        <div className="bg-[#0f0f0f] rounded-lg xl:h-[80vh] w-[60%] flex gap-6 flex-wrap justify-between items-center p-14 pt-6">
             <div>
                 <div>
-                    <p className="text-2xl font-bold">
+                    <p className="text-white text-2xl font-bold">
                         Upload Video
                     </p>
                     <p className="text-md text-gray-400 mt-1">
@@ -117,7 +117,7 @@ const Upload = () => {
                                                     Up to 10 minutes <br />
                                                     Less than 2GB
                                                 </p>
-                                                <p className="bg-[#70C8E8] text-center mt-10 rounded text-white text-md font-medium p-2 w-52 outline-none">
+                                                <p className="bg-[#70C8E8] text-center mt-10 rounded text-black text-md font-medium p-2 w-52 outline-none">
                                                     Select FIle
                                                 </p>
                                             </div>
@@ -139,25 +139,25 @@ const Upload = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-3 pb-10">
-                    <label className="text-md font-medium">
+                    <label className="text-white text-md font-medium">
                         Caption
                     </label>
                     <input type="text"
                         value={caption}
                         onChange={(e) => setCaption(e.target.value)} 
-                        className="rounded outline-none text-md border-2 border-grey-200 p-2"
+                        className="rounded outline-none text-md border-2 bg-[#121212] border-grey-200 p-2"
                     />
-                    <label className="text-md font-medium">
+                    <label className="text-white text-md font-medium">
                         Choose a Category
                     </label>
                     <select 
                         onChange={(e) => setCategory(e.target.value)}
-                        className="outline-none border-2 border-grey-200 text-md capitalize lg:p-4 p-2 rounded cursor-pointer"
+                        className="outline-none bg-[#121212] border-2 text-white text-md capitalize lg:p-4 p-2 rounded cursor-pointer"
                     >
                         {topics.map((topic) => (
                             <option
                                 key={topic.name}
-                                className="outline-none capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
+                                className="outline-none capitalize bg-[#121212] text-gray-100 text-md p-2 hover:bg-slate-300"
                             >
                                 {topic.name}
                             </option>
@@ -165,20 +165,20 @@ const Upload = () => {
                     </select>
                     <div className="flex gap-6 mt-10">
                         <button
-                        onClick={handlePost}
-                        type="button"
-                        className="border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
-                        >
-                            Discard
-                        </button>
-                        <button
                         onClick={() => {
 
                         }}
                         type="button"
-                        className="bg-[#70C8E8] text-white font-medium p-2 rounded w-28 lg:w-44 outline-none"
+                        className="bg-[#70C8E8] text-black font-medium p-2 rounded w-28 lg:w-44 outline-none"
                         >
                             Post
+                        </button>
+                        <button
+                        onClick={handlePost}
+                        type="button"
+                        className="bg-[#FE6862] text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
+                        >
+                            Discard
                         </button>
                     </div>
             </div>
