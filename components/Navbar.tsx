@@ -34,7 +34,7 @@ const Navbar = () => {
           {userProfile ? (
             <div className="flex gap-5 md:gap-10">
               <Link href="/upload">
-                <button className="border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2">
+                <button className="rounded bg-[#272727] px-1 py-2 text-white px-2 md:px-4 text-md font-semibold flex items-center gap-2">
                   <IoMdAdd className="text-xl" /> {` `}
                   <span className="hidden md:block">Upload</span>
                 </button>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 googleLogout();
                 removeUser();
                 }}>
-                <AiOutlineLogout color="red" fontSize={21}/>
+                <AiOutlineLogout color="white" fontSize={21}/>
               </button>
             </div>
           ) : (
