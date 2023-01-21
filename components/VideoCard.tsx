@@ -30,6 +30,12 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         }
     }
 
+    useEffect(() => {
+      if(videoRef?.current){
+        videoRef.current.muted = isVideoMuted;
+      }
+    }, [isVideoMuted])
+
   return (
     <div className='flex flex-col pb-6'>
       <div>
@@ -68,18 +74,20 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
             className="rounded-3xl">
-            <video
-                loop
-                ref={videoRef}
-                className="
-                    lg:w-[600px] h-[300px] 
-                    md:h-[400px] lg:h-[530px] 
-                    w-[200px] rounded-2xl 
-                    cursor-pointer bg-black"
-                src={post.video.asset.url}
-            >
-
-            </video>
+            <Link href={`/detail/${post._id}`}>
+              <video
+                  loop
+                  ref={videoRef}
+                  className="
+                      lg:w-[600px] h-[300px] 
+                      md:h-[400px] lg:h-[530px] 
+                      w-[200px] rounded-2xl 
+                      cursor-pointer bg-black"
+                  src={post.video.asset.url}
+              >
+            
+              </video>
+            </Link>
             {isHover && (
                 <div className="absolute bottom-6 cursor-pionter left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] p-3">
                     {playing ? (
@@ -105,6 +113,8 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         </div>
 
       </div>
+
+
     </div>
   );
 };
