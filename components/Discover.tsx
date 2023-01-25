@@ -9,15 +9,15 @@ const Discover: NextPage = () => {
   const router = useRouter();
   const { topic } = router.query;
 
-  const activeTopicStyle = 'xl:border-2 hover:bg-black xl:border-[#70C8E8] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-[#70C8E8]';
-  const topicStyle = 'xl:border-2 hover:bg-primary xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-white';
+  const activeTopicStyle = 'hover:bg-primary xl:border-[#70C8E8] px-3 py-2 rounded xl:rounded-full flex flex-initial items-center gap-2 justify-start cursor-pointer text-[#70C8E8]';
+  const topicStyle = 'hover:bg-primary xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify- cursor-pointer text-white';
 
   return (
     <div className='pb-6'>
       <p className='text-white font-semibold m-3 mt-4 hidden xl:block'>
         Popular Topics
       </p>
-      <div className='flex gap-3 flex-wrap'>
+      <div className='flex gap-3 flex-col'>
         {topics?.map((item) => (
           <Link href={`/?topic=${item.name}`} key={item.name}>
             <div className={topic === item.name ? activeTopicStyle : topicStyle}>
