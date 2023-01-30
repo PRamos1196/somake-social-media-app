@@ -48,13 +48,13 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                             />
                           </div>
 
-                          <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-primary'>
+                          <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-gray-400'>
                             {user.userName}{' '}
                             <GoVerified className='text-blue-400' />
                           </p>
                         </div>
                       </Link>
-                      <div>
+                      <div className='text-white'>
                         <p className='-mt-5 ml-16 text-[16px] mr-8'>
                           {item.comment}
                         </p>
