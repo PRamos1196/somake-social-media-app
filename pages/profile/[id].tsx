@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import Image from 'next/image';
 import { GoVerified } from "react-icons/go";
 import axios from 'axios';
@@ -17,9 +17,29 @@ interface IProps {
 }
 
 const Profile = ({ data }: IProps ) => {
+    const { user, userVideos, userLikedVideos} = data;
     return (
-        <div>
-            Profile
+        <div className='w-full'>
+            <div className='flex gap-6 md:gap-10 mb-4 w-full'>
+                <div className='w-16 h-16 md:w-32 md:h-32'>
+                    <Image
+                        width={120}
+                        height={120}
+                        className='rounded-full'
+                        src={user.image}
+                        alt='user-profile'
+                    />
+                </div>
+                <div className="flex flex-col items-center">
+                    <p className="md:text-2xl tracking wider flex gap-1 items-center justify-center text-md font-bold text-white">
+                        {user.userName.replaceAll(' ', '')}
+                        <GoVerified className="text-blue-400"/>
+                    </p>
+                    <p className="text-gray-400 capitalize md:text-xl text-xs">
+                        {user.userName}
+                    </p>
+                </div>
+            </div>
         </div>
     )
 }
