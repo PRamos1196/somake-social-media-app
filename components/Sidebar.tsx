@@ -28,7 +28,7 @@ const Sidebar: NextPage = () => {
       </div>
       {showSidebar && (
         <div className='xl:w-400 w-20 flex flex-col justify-start mb-10 xl:border-0 p-3 '>
-          <div className='xl:pb-4'>
+          <div className='xl:pb-4 text-white'>
             <Link href='/'>
               <div className={pathname === '/' ? activeLink : normalLink}>
                 <p className='text-2xl'>
