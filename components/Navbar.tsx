@@ -14,21 +14,30 @@ import Logo from '../utils/Somake-logo.png';
 import { createOrGetUser } from '../utils';
 
 import useAuthStore from '../store/authStore';
+import { IUser } from '../types';
 
+interface IProps {
+  
+}
 
 const Navbar = () => {
 
-  const [searchValue, setSearchValue] = useState("")
-  const { userProfile, addUser, removeUser } = useAuthStore();
+  const [user, setUser] = useState<IUser | null>();
+  const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
+  const { userProfile, addUser, removeUser } = useAuthStore();
+  
+  useEffect(() => {
+    setUser(userProfile);
+  }, [userProfile]);
 
-  const handleSearch = (e: { preventDefault: () => void}) => {
+  const handleSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
+    
     if(searchValue) {
-      router.push(`/search/${searchValue}`)
+      router.push(`/search/${searchValue}`);
     }
-  }
+  };
   return (
     <div className="bg-[#0F0F0F] w-full flex justify-between items-center py-2 px-4">
         <Link href="/">
@@ -57,7 +66,7 @@ const Navbar = () => {
         </form>
       </div>
         <div>
-          {userProfile ? (
+          {user ? (
             <div className="flex gap-5 md:gap-10">
               <Link href="/upload">
                 <button className="rounded bg-[#272727] px-1 py-2 text-white px-2 md:px-4 text-md font-semibold flex items-center gap-2">
@@ -65,14 +74,14 @@ const Navbar = () => {
                   <span className="hidden md:block">Upload</span>
                 </button>
               </Link>  
-              {userProfile.image && (
-                <Link href={`/`}>
+              {user.image && (
+                <Link href={`/profile/${user._id}`}>
                 <>
                   <Image
                     width={40}
                     height={40}
                     className='rounded-full cursor-pointer'
-                    src={userProfile.image}
+                    src={user.image}
                     alt='user-profile'
                   />
                 </>
