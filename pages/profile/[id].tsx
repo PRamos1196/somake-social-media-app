@@ -17,7 +17,24 @@ interface IProps {
 }
 
 const Profile = ({ data }: IProps ) => {
+
+    const [showUserVideos, setShowUserVideos] = useState(true);
+
     const { user, userVideos, userLikedVideos} = data;
+
+    const [videosList, setVideosList] = useState<Video[]>([]);
+
+    const videos = showUserVideos ? 'text-[#70C8E8] bg-[#272727] rounded p-3' : 'text-gray-400'
+    const liked = !showUserVideos ? 'text-[#70C8E8] bg-[#272727] rounded p-3' : 'text-gray-400'
+
+    useEffect(() => {
+      if(showUserVideos) {
+        setVideosList(userVideos)
+      }else{
+        setVideosList(userLikedVideos)
+      }
+    }, [showUserVideos, userLikedVideos, userVideos])
+    
     return (
         <div className='w-full'>
             <div className='flex gap-6 md:gap-10 mb-4 w-full'>
@@ -38,6 +55,28 @@ const Profile = ({ data }: IProps ) => {
                     <p className="text-gray-400 capitalize md:text-xl text-xs">
                         {user.userName}
                     </p>
+                </div>
+            </div>
+
+            <div className=''>
+                <div className='flex gap-10 mb-10 mt-10 border-b-2 border-gray-200'>
+                <p className={`text-xl font-semibold 
+                    cursor-pointer mt-2 p-3 ${videos}`} onClick=
+                    {() => setShowUserVideos(true)}>
+                        Videos
+                    </p>
+                    <p className={`text-xl font-semibold 
+                    cursor-pointer mt-2 p-3 ${liked}`} onClick=
+                    {() => setShowUserVideos(false)}>
+                        Liked
+                    </p>
+                </div>
+                <div className="flex gap-6 flex-wrap md:justify-start">
+                    {videosList.length > 0 ? (
+                        videosList.map((post: Video, idx: number) => (
+                            <VideoCard post={post} key={idx}/>
+                        ))
+                     ): <NoResults text={`No ${showUserVideos ? '' : 'Liked'} Videos`} /> }
                 </div>
             </div>
         </div>
